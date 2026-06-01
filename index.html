@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacqueline Abulencia | Virtual Assistant Portfolio</title>
+    <!-- Google Fonts Link for beautiful typography execution -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ------------------------------------ */
+        /* CSS VARIABLES & DESIGN SYSTEM        */
+        /* ------------------------------------ */
+        :root {
+            --bg-color: #FAF7F2;       /* Soft cream / Warm café walls */
+            --text-main: #2C2520;      /* Dark espresso */
+            --text-muted: #6E6259;     /* Soft latte / Muted brown */
+            --accent-warm: #D48C70;    /* Terracotta accent */
+            --accent-light: #EADBC8;   /* Light warm beige for cards */
+            --white: #FFFFFF;
+            
+            --font-header: 'Playfair Display', Georgia, serif;
+            --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* ------------------------------------ */
+        /* RESET & BASE STYLES                  */
+        /* ------------------------------------ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-header);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        section {
+            padding: 100px 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3.5rem;
+            max-width: 600px;
+        }
+
+        /* ------------------------------------ */
+        /* NAVIGATION BAR                       */
+        /* ------------------------------------ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(250, 247, 242, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(110, 98, 89, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-family: var(--font-header);
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+            z-index: 1001;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-warm);
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1001;
+        }
+
+        .burger span {
+            width: 25px;
+            height: 2px;
+            background-color: var(--text-main);
+            transition: var(--transition-smooth);
+        }
+
+        .burger.toggle span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .burger.toggle span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger.toggle span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* ------------------------------------ */
+        /* HERO SECTION                         */
+        /* ------------------------------------ */
+        #hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+            padding-top: 120px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .hero-tag {
+            background-color: var(--accent-light);
+            color: var(--text-main);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 24px;
+            max-width: 850px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subheadline {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .profile-pic {
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-light);
+            box-shadow: 0 20px 40px rgba(110, 98, 89, 0.15);
+            transition: var(--transition-smooth);
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-warm);
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            border: 1px solid var(--text-main);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-warm);
+            border-color: var(--accent-warm);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid rgba(44, 37, 32, 0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-main);
+            background-color: rgba(44, 37, 32, 0.03);
+            transform: translateY(-2px);
+        }
+
+        /* ------------------------------------ */
+        /* MY STORY SECTION                     */
+        /* ------------------------------------ */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .story-showcase-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .story-img-card {
+            width: 100%;
+            background: var(--white);
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(110, 98, 89, 0.1);
+            box-shadow: 0 15px 35px rgba(110, 98, 89, 0.08);
+        }
+
+        .story-showcase-pic {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            border-radius: 12px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .story-sidebar {
+            background-color: var(--accent-light);
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .story-sidebar h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+
+        .personality-list {
+            list-style: none;
+        }
+
+        .personality-list li {
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .personality-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--accent-warm);
+        }
+
+        /* ------------------------------------ */
+        /* WHAT I DO SECTION                    */
+        /* ------------------------------------ */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(110, 98, 89, 0.1);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(212, 140, 112, 0.1);
+            border-color: rgba(212, 140, 112, 0.3);
+        }
+
+        .value-icon-box {
+            width: 52px;
+            height: 52px;
+            background-color: rgba(212, 140, 112, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border: 1px solid rgba(212, 140, 112, 0.15);
+        }
+
+        .value-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        /* ------------------------------------ */
+        /* WORK I'M PROUD OF                    */
+        /* ------------------------------------ */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding: 40px;
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(110, 98, 89, 0.1);
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .timeline-item:hover {
+            border-color: var(--accent-warm);
+            box-shadow: 0 10px 25px rgba(110, 98, 89, 0.04);
+        }
+
+        .timeline-header-block {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .timeline-graphic-box {
+            flex-shrink: 0;
+            width: 64px;
+            height: 64px;
+            background-color: rgba(212, 140, 112, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 140, 112, 0.2);
+        }
+
+        .timeline-meta-text {
+            flex-grow: 1;
+        }
+
+        .timeline-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .timeline-role {
+            font-size: 1.4rem;
+            font-family: var(--font-header);
+            color: var(--text-main);
+        }
+
+        .timeline-company {
+            font-weight: bold;
+            color: var(--accent-warm);
+        }
+
+        .human-story {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(110, 98, 89, 0.2);
+        }
+
+        .human-story h4 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .tag-container {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .tag {
+            background-color: var(--bg-color);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        /* ------------------------------------ */
+        /* ANIMATIONS FOR CATCHY VECTOR ART    */
+        /* ------------------------------------ */
+        @keyframes pulseRadar {
+            0% { transform: scale(0.95); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+        @keyframes floatGraphic {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        @keyframes drawStar {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1) rotate(15deg); }
+        }
+        @keyframes spinGear {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes bounceMail {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .anim-radar { transform-origin: center; animation: pulseRadar 2s infinite ease-out; }
+        .anim-float { animation: floatGraphic 3s infinite ease-in-out; }
+        .anim-star { transform-origin: center; animation: drawStar 4s infinite ease-in-out; }
+        .anim-gear { transform-origin: center; animation: spinGear 8s infinite linear; }
+
+        /* ------------------------------------ */
+        /* LET'S CONNECT SECTION (REVAMPED)     */
+        /* ------------------------------------ */
+        .connect-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            background-color: var(--white);
+            padding: 60px;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(212, 140, 112, 0.12);
+        }
+
+        /* Energetic border stroke motif using the existing palette variables */
+        .connect-container::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(135deg, var(--accent-warm), var(--accent-light), var(--text-main));
+            border-radius: 22px;
+            z-index: -1;
+        }
+
+        .connect-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .connect-info h3 {
+            font-size: 2.3rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .connect-tagline {
+            font-size: 1.15rem;
+            color: var(--accent-warm);
+            font-weight: 600;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .mail-graphic-container {
+            margin-bottom: 24px;
+            animation: bounceMail 2.5s infinite ease-in-out;
+        }
+
+        .email-link {
+            font-family: var(--font-header);
+            font-size: 1.6rem;
+            color: var(--text-main);
+            display: inline-block;
+            margin-bottom: 16px;
+            transition: var(--transition-smooth);
+            border-bottom: 2px dashed rgba(212, 140, 112, 0.4);
+            padding-bottom: 4px;
+        }
+
+        .email-link:hover {
+            color: var(--accent-warm);
+            border-bottom-style: solid;
+            border-color: var(--accent-warm);
+        }
+
+        .phone-link {
+            font-family: var(--font-body);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition-smooth);
+            background-color: var(--bg-color);
+            padding: 10px 18px;
+            border-radius: 8px;
+            width: max-content;
+        }
+
+        .phone-link:hover {
+            color: var(--white);
+            background-color: var(--accent-warm);
+            transform: scale(1.03);
+        }
+
+        .connect-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: var(--bg-color);
+            padding: 36px;
+            border-radius: 12px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 14px;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            background-color: var(--white);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-main);
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-warm);
+            box-shadow: 0 0 12px rgba(212, 140, 112, 0.2);
+        }
+
+        /* ------------------------------------ */
+        /* FOOTER                               */
+        /* ------------------------------------ */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid rgba(110, 98, 89, 0.1);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ------------------------------------ */
+        /* RESPONSIVE MEDIA QUERIES             */
+        /* ------------------------------------ */
+        @media (max-width: 968px) {
+            #hero { 
+                grid-template-columns: 1fr; 
+                gap: 40px; 
+                padding-top: 140px; 
+                text-align: center;
+            }
+            .hero-content {
+                align-items: center;
+                order: 2;
+            }
+            .hero-image-container {
+                order: 1;
+            }
+            .profile-pic {
+                width: 280px;
+                height: 280px;
+            }
+            #hero h1 { font-size: 2.5rem; }
+            
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .story-showcase-wrapper {
+                order: 1;
+            }
+            .story-text {
+                order: 2;
+            }
+
+            .connect-container { grid-template-columns: 1fr; gap: 40px; padding: 30px; }
+            .burger { display: flex; }
+            
+            .nav-links { 
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                padding: 40px 24px;
+                box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+                border-bottom: 1px solid rgba(110, 98, 89, 0.1);
+                gap: 24px;
+                opacity: 0;
+                pointer-events: none;
+                transform: translateY(-10px);
+                transition: var(--transition-smooth);
+                text-align: left;
+            }
+
+            .nav-links.active {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0);
+            }
+            .cta-container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #hero h1 { font-size: 2.1rem; }
+            .profile-pic { width: 240px; height: 240px; }
+            section { padding: 60px 20px; }
+            .timeline-item { padding: 24px; }
+            .timeline-header-block { flex-direction: column; gap: 12px; }
+            .timeline-meta { flex-direction: column; }
+            .phone-link { width: 100%; justify-content: center; }
+            .connect-form { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#hero" class="logo">Jacqueline Abulencia</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#story">My Story</a></li>
+                    <li><a href="#what-i-do">What I Do</a></li>
+                    <li><a href="#work">Work I'm Proud Of</a></li>
+                    <li><a href="#connect">Let's Connect</a></li>
+                </ul>
+            </nav>
+            <div class="burger" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-tag">Virtual Assistant based in Cebu, Philippines</div>
+            <h1>A reliable and adaptable Virtual Assistant who values clarity, communication, and calm execution under pressure.</h1>
+            <p class="hero-subheadline">Friendly, approachable, and extroverted professional with deep experience in customer service, case management, and property coordination.</p>
+            <div class="cta-container">
+                <a href="#work" class="btn btn-primary">View My Work</a>
+                <a href="#connect" class="btn btn-secondary">Contact Me</a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <img src="fc0bbe57-2b3c-46c0-a230-e1bc4e81e4d7.jpg" alt="Jacqueline Abulencia" class="profile-pic">
+        </div>
+    </section>
+
+    <section id="story">
+        <h2 class="section-title">My Story</h2>
+        <p class="section-subtitle">How unexpected detours built a reliable background in client support and operations.</p>
+        
+        <div class="story-grid">
+            <div class="story-text">
+                <p>I am currently based in Cebu, Philippines, where I was born and raised. I would describe myself as a friendly, approachable, and extroverted person who loves human connection. I stay calm under pressure, value clear communication, and I am always looking for ways to expand my skillset.</p>
+                <p>My career started during the pandemic as a Customer Service Representative. Dropped into a fast-paced, client-focused environment overnight, I quickly adapted—learning how to communicate across barriers, resolve concerns, and anchor myself under pressure.</p>
+                <p>From there, I moved into specialized roles, eventually serving as a Senior Case Manager at Airbnb. That experience truly taught me how to step back, look at the big picture, and thoughtfully mediate between guests and hosts to ensure fair, professional resolutions.</p>
+                <p>Later, I joined AnyoneHome as a Property Consultant, Property Manager, and Maintenance Coordinator. This role stretched my logistical muscles—handling property documentation, coordinating quick maintenance physical turnarounds, and problem-solving timelines simultaneously.</p>
+                <p>My path wasn’t planned from day one, but looking back, each step helped me realize what I enjoy most: supporting people, building order out of mess, and making sure backend operations run smoothly.</p>
+            </div>
+            
+            <div class="story-showcase-wrapper">
+                <div class="story-img-card">
+                    <img src="4b4da9be-50ec-45b6-bd1a-49c8afed24f7.jpg" alt="Jacqueline Abulencia Professional Achievement Showcase" class="story-showcase-pic">
+                </div>
+                
+                <div class="story-sidebar">
+                    <h3>Behind the Scenes</h3>
+                    <ul class="personality-list">
+                        <li><strong>Well-Organized:</strong> Thoughtful, analytical, and always planning a step or two ahead.</li>
+                        <li><strong>Out of Office:</strong> You'll usually find me hiking, trekking, or walking around scenic spots.</li>
+                        <li><strong>Fun Fact:</strong> Most people don’t know that I used to be a consistent top and honor student throughout school.</li>
+                        <li><strong>My Superpower:</strong> Breaking down complex, overwhelming ideas into simple, actionable explanations.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="what-i-do">
+        <h2 class="section-title">What I Do & Value</h2>
+        <p class="section-subtitle">The principles I bring to every task, inbox, and spreadsheet.</p>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon-box">
+                    <!-- Meaningful Delivery Art -->
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="anim-star">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#D48C70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>Meaningful Delivery</h3>
+                <p>What I care most about is delivering stellar service while making sure clients and partners feel fully heard and supported. Speed is fine, but accuracy matters more.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon-box">
+                    <!-- Systems & Organization Art -->
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="anim-gear">
+                        <circle cx="12" cy="12" r="3" stroke="#2C2520" stroke-width="2"/>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="#D48C70" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3>Systems & Organization</h3>
+                <p>I thrive when working behind the scenes on coordination, communication, and tweaking systems to run more smoothly and effectively.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon-box">
+                    <!-- Vision For the Future Art -->
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="anim-float">
+                        <path d="M22 2L11 13" stroke="#2C2520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="#D48C70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>Vision For the Future</h3>
+                <p>In one year, I see myself working full-time as a confident, highly technical Virtual Assistant. I aim to handle complex tasks independently while building a long-term, stable remote career.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="work">
+        <h2 class="section-title">Work I'm Proud Of</h2>
+        <p class="section-subtitle">A human look into my professional timeline and the problems I have helped solve.</p>
+        
+        <div class="timeline">
+            <!-- Senior Case Manager Block -->
+            <div class="timeline-item">
+                <div class="timeline-header-block">
+                    <div class="timeline-graphic-box">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="anim-float">
+                            <circle cx="12" cy="12" r="10" stroke="#D48C70" stroke-width="1.5" class="anim-radar" />
+                            <path d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z" stroke="#2C2520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 7V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V7" stroke="#2C2520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 12V16" stroke="#D48C70" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="timeline-meta-text">
+                        <div class="timeline-meta">
+                            <span class="timeline-role">Senior Case Manager</span>
+                            <span class="timeline-company">Airbnb</span>
+                        </div>
+                        <p>Managed escalations and structural resolutions for international clients, ensuring metrics met quality targets under strict deadlines.</p>
+                    </div>
+                </div>
+                
+                <div class="human-story">
+                    <h4>The Human Story</h4>
+                    <p>I acted as the neutral bridge between stressed guests and hosts during highly emotional scenarios. I was consistently recognized for staying calm, finding paths to compromise, and turning tense standoffs into fair resolutions where both sides felt protected.</p>
+                </div>
+                <div class="tag-container">
+                    <span class="tag">Mediation</span>
+                    <span class="tag">Conflict Resolution</span>
+                    <span class="tag">Escalation Handling</span>
+                </div>
+            </div>
+
+            <!-- Property Consultant Block -->
+            <div class="timeline-item">
+                <div class="timeline-header-block">
+                    <div class="timeline-graphic-box">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="anim-float">
+                            <circle cx="12" cy="5" r="2" fill="#D48C70" class="anim-radar" />
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" stroke="#2C2520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 22V12h6v10" stroke="#D48C70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="timeline-meta-text">
+                        <div class="timeline-meta">
+                            <span class="timeline-role">Property Consultant, Manager & Coordinator</span>
+                            <span class="timeline-company">AnyoneHome</span>
+                        </div>
+                        <p>Oversaw real estate operations including pipeline coordination, maintenance ticketing, and portfolio synchronization.</p>
+                    </div>
+                </div>
+                
+                <div class="human-story">
+                    <h4>The Human Story</h4>
+                    <p>This role was all about logistics and keeping a cool head. I managed tenants' urgent property maintenance needs, smoothed over lease issues, and coordinated vendors—learning how to communicate terms clearly and execute plans cleanly behind the scenes.</p>
+                </div>
+                <div class="tag-container">
+                    <span class="tag">Property Coordination</span>
+                    <span class="tag">Multitasking</span>
+                    <span class="tag">Vendor Management</span>
+                </div>
+            </div>
+
+            <!-- Customer Service Representative Block -->
+            <div class="timeline-item">
+                <div class="timeline-header-block">
+                    <div class="timeline-graphic-box">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="anim-float">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="#2C2520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 14c1.6569 0 3-1.3431 3-3s-1.3431-3-3-3-3 1.3431-3 3 1.3431 3 3 3z" fill="#D48C70" class="anim-radar" />
+                        </svg>
+                    </div>
+                    <div class="timeline-meta-text">
+                        <div class="timeline-meta">
+                            <span class="timeline-role">Customer Service Representative</span>
+                            <span class="timeline-company">Pandemic Entry</span>
+                        </div>
+                        <p>Began my professional journey during a global shift, adapting to intense call flows and technical problem-solving.</p>
+                    </div>
+                </div>
+                <div class="tag-container">
+                    <span class="tag">Customer Support</span>
+                    <span class="tag">Active Listening</span>
+                    <span class="tag">Adaptability</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="connect">
+        <div class="connect-container">
+            <div class="connect-info">
+                <div class="mail-graphic-container">
+                    <!-- Modern Contact Dynamic Frame Overlay -->
+                    <svg width="58" height="58" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#2C2520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M22 6L12 13L2 6" stroke="#D48C70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>Let's Connect</h3>
+                <p class="connect-tagline">“Let’s work together and build something smooth, organized, and impactful.”</p>
+                
+                <a href="mailto:abulenciajackie@gmail.com" class="email-link">abulenciajackie@gmail.com</a>
+                <a href="tel:09616331432" class="phone-link">📱 Call or SMS: 09616331432</a>
+            </div>
+            
+            <div>
+                <form class="connect-form" onsubmit="event.preventDefault(); alert('Thank you for reaching out! This is a demo submission.');">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required placeholder="Jane Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="jane@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" rows="5" required placeholder="Tell me about what you're building..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-start; margin-top: 10px;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Jacqueline Abulencia. Crafted with care from Cebu, Philippines.</p>
+    </footer>
+
+    <script>
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links a');
+
+        burgerMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burgerMenu.classList.toggle('toggle');
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burgerMenu.classList.remove('toggle');
+            });
+        });
+    </script>
+</body>
+</html>
